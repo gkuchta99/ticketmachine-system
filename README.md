@@ -1,6 +1,12 @@
-# Foobar
+# Ticket machine system
 
-Foobar is a Python library for dealing with word pluralization.
+Ticket machine system is tcp/socket based application, which consists 3 .jar files. Project works with Java 11.
+
+## CentralHub
+We run one instantion of CentralHub. CentralHub cooperates with other instances of app (AdminPanel, TicketMachine). CentralHub handles requests from AdminPanels to add more tickets for event or create new event and handle requests from ticket machines for buying tickets. To run instantion of CentralHub use code below.
+```bash
+java -jar centralHub.jar <port_number>
+```
 
 ## Installation
 
