@@ -44,6 +44,11 @@ public class CentralHubTicketMachineDataTransferThread implements Runnable {
                                 eventContainer.eventArrayList.get(i).getTotalTickets());
                     }
                 }
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 out.println(stringBuilder.toString());
                 gui.label.setText("updated");
                 gui.revalidate();

@@ -16,9 +16,9 @@ public class TicketMachine {
     private BufferedReader in;
     private TicketMachineGui ticketMachineGui;
 
-    public TicketMachine() throws IOException {
+    public TicketMachine(String ip, int port) throws IOException {
         ticketMachineGui = new TicketMachineGui();
-        sendingSocket = new Socket("127.0.0.1", 4444);
+        sendingSocket = new Socket(ip, port);
         out = new PrintWriter(sendingSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(sendingSocket.getInputStream()));
         out.println("ticket");

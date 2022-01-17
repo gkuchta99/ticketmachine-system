@@ -17,9 +17,9 @@ public class CentralHub {
     int port;
     Boolean updateTicketMachines = false;
 
-    public CentralHub() throws IOException {
+    public CentralHub(int port) throws IOException {
         gui = new CentralHubGui();
-        serverSocket = new ServerSocket(4444);
+        serverSocket = new ServerSocket(port);
         while (true) {
             Socket socket = serverSocket.accept();
             out = new PrintWriter(socket.getOutputStream(), true);

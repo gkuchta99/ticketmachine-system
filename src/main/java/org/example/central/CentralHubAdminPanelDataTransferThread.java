@@ -42,13 +42,17 @@ public class CentralHubAdminPanelDataTransferThread implements Runnable {
             }
             if (!inputLine.equals("")) {
                 System.out.println("centralhub thread received something");
-                receive(inputLine);
+                try {
+                    receive(inputLine);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
     }
 
-    private void receive(String inputLine) {
+    private void receive(String inputLine) throws InterruptedException {
         if (inputLine.charAt(0) == '#') {
             StringBuilder dataRow = new StringBuilder(inputLine);
             dataRow.deleteCharAt(0);
@@ -59,6 +63,7 @@ public class CentralHubAdminPanelDataTransferThread implements Runnable {
         } else {
             System.err.println("to sie nie powinno pojawic");
         }
+
         gui.refreshEvents(eventContainer);
         gui.label.setText("not updated");
         gui.revalidate();

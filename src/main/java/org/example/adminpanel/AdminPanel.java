@@ -12,8 +12,13 @@ public class AdminPanel extends AdminPanelGui {
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
+    private int port;
+    private String ip;
 
-    public AdminPanel() {
+    public AdminPanel(String ip, int port) {
+        super();
+        this.port = port;
+        this.ip = ip;
         addEventButton.addActionListener(e -> addEvent());
         connectWithHubButton.addActionListener(e -> {
             try {
@@ -22,6 +27,9 @@ public class AdminPanel extends AdminPanelGui {
                 ioException.printStackTrace();
             }
         });
+    }
+
+    public AdminPanel() {
     }
 
     private void addEvent() {
@@ -37,7 +45,7 @@ public class AdminPanel extends AdminPanelGui {
     }
 
     private void connect() throws IOException {
-        clientSocket = new Socket("127.0.0.1", 4444);
+        clientSocket = new Socket(ip, port);
         out = new PrintWriter(clientSocket.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         addEventButton.setEnabled(true);

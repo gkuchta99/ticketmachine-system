@@ -1,11 +1,10 @@
-package org.example;
-
-import org.example.ticketmachine.TicketMachine;
+package org.example.ticketmachine;
 
 import java.io.IOException;
 
 public class TicketMachineMain {
     public static void main(String[] args) throws IOException {
-        new TicketMachine();
+        if (args.length == 2)
+            new TicketMachine(args[0], Integer.parseInt(args[1]));
     }
 }
